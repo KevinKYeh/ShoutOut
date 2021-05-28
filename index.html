@@ -154,7 +154,7 @@
           
           userSearch.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + username);
           userSearch.setRequestHeader('Client-ID', 'cjw2ewijhdkcfvm194n67pvlqvo4rr');
-          userSearch.setRequestHeader('Authorization', 'Bearer ' + access_token);
+          //userSearch.setRequestHeader('Authorization', 'Bearer ' + access_token);
           userSearch.send();
     
           userSearch.onload = function () {
