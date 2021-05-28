@@ -237,76 +237,7 @@
       ComfyJS.onChat = ( user, message, flags, self, extra ) => {
       console.log( user, message, extra );
 
-      // Reward Section
-      if(flags.customReward && extra.customRewardId === "NOTINUSE"){
-                  console.log("So Reward Triggered");
-                        function reqListener () {
-                mp4Res = this.responseText;
-                console.log(mp4Res);
-                  if(mp4Res.length > 5) {
-                    clips.push(this.responseText);
-                    names.push(message);
-                    commandType.push("clip");
-                    console.log("Clip Found");
-                  } else {
-                    console.log("No Clips Found");
-                  }
-              }
 
-            var oReq = new XMLHttpRequest();
-            oReq.addEventListener("load", reqListener);
-            oReq.open("GET", "../clipsapi.php?channel="+message);
-            oReq.send();
-            }
-
-            if(flags.customReward && extra.customRewardId === "off"){
-              console.log("Slug Reward Triggered");
-              function reqListener () {
-               slugClip = JSON.parse(this.responseText);
-                if(this.responseText.length > 5) {
-                   commandType.push("slug");
-                   console.log("Found Clip");
-                   clips.push(slugClip[0].mp4)
-                   names.push(slugClip[0].broadcaster_name);
-                   slugCreator.push(slugClip[0].creator_name) 
-                   slugViewCount.push(slugClip[0].view_count)
-                   slugTitle.push(slugClip[0].title)
-                   slugDate.push(slugClip[0].created_at)
-                } else {
-                  console.log("No Clip Found");
-                  }
-          }
-        }
-
-        var oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", reqListener);
-        if(message.includes("clip/")) {
-          console.log("true /");
-          message = message.split("clip/");
-          message = message[1];
-        }
-		
-		  if(message.includes("?")){
-          console.log("?");
-          message = message.split("?");
-          message = message[0];
-        }
-		
-        if(message.includes("clips.twitch.tv")){
-          console.log("clips.twitch");
-          message = message.split(".tv/");
-          message = message[1];
-        }
-		
-
-		
-		console.log(message);
-        oReq.open("GET", "../clipgrab.php?slug="+message);
-        oReq.send();
-        }
-		
-      
-      
 
       ComfyJS.Init( "kaeyay" );
       
