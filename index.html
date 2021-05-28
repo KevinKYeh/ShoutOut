@@ -140,7 +140,7 @@
 
             var oReq = new XMLHttpRequest();
             oReq.addEventListener("load", reqListener);
-            oReq.open("GET", "./clipsapi2.php?channel="+message);
+            oReq.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + message);
             oReq.send();
             }
 		}
