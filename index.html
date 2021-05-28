@@ -131,7 +131,8 @@
       XML.send();
       XML.onload = function () {
         var obj = JSON.parse(XML.response);
-        access_token = obj["access_token"];}
+        var temp = obj["access_token"];
+	      access_token = temp;}
 	
 	console.log(access_token);
 		
