@@ -113,7 +113,7 @@
     var mp4Res;
   	var listenBotSo = true;
     var listenBotSlug = true;
-	    var access_token = "";
+
 
     container.style.visibility = 'hidden';
       ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
@@ -132,7 +132,7 @@
       XML.onload = function () {
         var obj = JSON.parse(XML.response);
         var temp = obj["access_token"];
-	      access_token = temp;}
+	      var access_token = temp;}
 	
 	console.log(access_token);
 		
