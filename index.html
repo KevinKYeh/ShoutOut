@@ -118,6 +118,14 @@
 
     container.style.visibility = 'hidden';
       ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
+	      
+	var XML = new XMLHttpRequest();
+	XML.open("POST", "https://id.twitch.tv/oauth2/token?client_id=txe9if6h2jfb6vz9d6gf76u969uhua&client_secret=n967c2dchypjejm16gn6umoeapdskj&grant_type=client_credentials");
+      XML.send();
+      XML.onload = function () {
+        var obj = JSON.parse(XML.response);
+        var temp = obj["access_token"];
+        access_token = temp;}
 	     
 
          if(command === "resetso" && flags.broadcaster || command === "resetso" && flags.mod){
@@ -126,14 +134,6 @@
 
         if( flags.broadcaster && command == "so" || flags.mod && command == "so" || flags.broadcaster && command == "soclip" || flags.mod && command == "soclip" ) {
           console.log("So Command Triggered");
-		
-	var XML = new XMLHttpRequest();
-	XML.open("POST", "https://id.twitch.tv/oauth2/token?client_id=txe9if6h2jfb6vz9d6gf76u969uhua&client_secret=n967c2dchypjejm16gn6umoeapdskj&grant_type=client_credentials");
-      XML.send();
-      XML.onload = function () {
-        var obj = JSON.parse(XML.response);
-        var temp = obj["access_token"];
-        access_token = temp;}
 	
 	console.log(access_token);
 		
