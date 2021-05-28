@@ -124,7 +124,7 @@
       XML.onload = function () {
         var obj = JSON.parse(XML.response);
         access_token = obj["access_token"]}
-
+	console.log(access_token);
 
          if(command === "resetso" && flags.broadcaster || command === "resetso" && flags.mod){
                location.reload();
