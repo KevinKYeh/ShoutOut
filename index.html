@@ -124,7 +124,50 @@
       XML.onload = function () {
         var obj = JSON.parse(XML.response);
         var temp = obj["access_token"];
-        access_token = temp;}
+        access_token = temp;
+      
+              if(window.location.hash) {
+          var parameters = window.location.hash
+          parameters = parameters.replace("#", "")
+          var splitParams = parameters.split("&")
+
+          var username = splitParams[0]
+          broadcast_name = username
+          if(splitParams.length > 1){
+            if(splitParams[1] == "onlyme"){
+              onlymyclips = true
+            }
+          }
+
+          if(onlymyclips){
+            console.log("Only using clips by " + username)
+          }
+
+
+
+          ComfyJS.Init( username );
+
+          var userSearch = new XMLHttpRequest();
+          var b_id
+          var channels
+          
+          userSearch.open("GET", "https://api.twitch.tv/helix/search/channels?query=" + username);
+          userSearch.setRequestHeader('Client-ID', 'cjw2ewijhdkcfvm194n67pvlqvo4rr');
+          userSearch.setRequestHeader('Authorization', 'Bearer ' + access_token);
+          userSearch.send();
+    
+          userSearch.onload = function () {
+            channels = JSON.parse(userSearch.response).data
+    
+            for (x in channels) {
+              if(channels[x].display_name == username){
+                broadcast_id = channels[x].id
+              }
+            }
+            
+          }
+        }
+      }
 	 XML.send();
 	     
 
