@@ -113,9 +113,16 @@
     var mp4Res;
   	var listenBotSo = true;
     var listenBotSlug = true;
+    var access_token
 
     container.style.visibility = 'hidden';
       ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
+	      
+	       XML.open("POST", "https://id.twitch.tv/oauth2/token?client_id=cjw2ewijhdkcfvm194n67pvlqvo4rr&client_secret=eprn4zv0kj7dgxnooy18zsh38vx0r6&grant_type=client_credentials");
+      XML.send();
+      XML.onload = function () {
+        var obj = JSON.parse(XML.response);
+        access_token = obj["access_token"]}
 
 
          if(command === "resetso" && flags.broadcaster || command === "resetso" && flags.mod){
