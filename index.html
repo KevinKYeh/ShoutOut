@@ -169,7 +169,8 @@
         }
       }
 	 XML.send();
-	     
+	 console.log(access_token);
+
 
          if(command === "resetso" && flags.broadcaster || command === "resetso" && flags.mod){
                location.reload();
@@ -177,9 +178,7 @@
 
         if( flags.broadcaster && command == "so" || flags.mod && command == "so" || flags.broadcaster && command == "soclip" || flags.mod && command == "soclip" ) {
           console.log("So Command Triggered");
-	
-	console.log(access_token);
-		
+			
           if(listenBotSo) {
               function reqListener () {
                 mp4Res = this.responseText;
